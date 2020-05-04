@@ -92,11 +92,11 @@ Log in to the cluster and run this command to create a conda envionment for your
 - msprime  (simulation)
 - scikit-allel vcftools (workign with VCF files)
 
-I tend to hedge my bets and install all I could possibly end up needing:
+If you run the long command below you will have access to all (and probably much more then) you need:
 
     conda create --name bircproject -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda -c python=3.7 slurm-jupyter jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify gwf
 
-If you end up needing more packages than you initialli included, you can easily install them later.
+Should you end up needing more packages than you initially included, you can easily install them later.
 
 
 ## Jupyter on the cluster
@@ -118,13 +118,9 @@ Enable matplotlib extensions for jupyter lab:
 
 <script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
 
-## Visual Stuio Code
+## Visual Studio Code
 
-
-
-## Backup on the cluster
-
-link to the backup information
+On the cluster using remote...
 
 ## Git and GitHub
 
@@ -132,10 +128,12 @@ Fork this repository...
 
 As backup
 
-## VS Code on the cluster
+## Backup on the cluster
+
+link to the backup information
+
+## Building workflows with GWF
 
 
-## Building workflows with gwf GWF
+## Working with Jupyter notebooks
 
-
-## Distributing conda packages and Docker images
