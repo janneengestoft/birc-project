@@ -1,19 +1,8 @@
 # Data analysis project on GenomeDK
 
-This repository serve as a walk-though of how to begin a data analysis project on the GenomeDK cluter. Be that a PiB, BSc, Msc, or PhD project. All it assumes is some basic experience with Python programmingis and executing commands in a "terminal".
+This repository serve as a walk-though of how to begin a data analysis project on the GenomeDK cluter. Be that a PiB, BSc, Msc, or PhD project. Some basic experience with Python programmingis and executing commands in a "terminal" is assumed.
 
-The goal is to ... 
-
-Once you are done you will have completed all these steps.
-
-- Get an account
-- terminal cheat sheet
-- conda
-- set up to use jupyter remotely ()
-- vs code
-- Git account
-- Fork this repository (with README, directories, example notebooks and workflows)
-- Git as backup
+The cluster is a very largre collection of computers with a shared file system. It does not have a screen and a keyboard you can go use. However, by connecting to the cluster from your own computer, you can create and edit files much like if they were on your own machine. The goal here is to take you thrugh all the steps required to make this possible.
 
 ## Install Python on your own machine
 
@@ -129,6 +118,8 @@ Enable matplotlib extensions for jupyter lab:
 
 <script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
 
+## Visual Stuio Code
+
 
 
 ## Backup on the cluster
@@ -139,6 +130,7 @@ link to the backup information
 
 Fork this repository...
 
+As backup
 
 ## VS Code on the cluster
 
