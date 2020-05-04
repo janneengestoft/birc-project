@@ -1,4 +1,15 @@
-# Getting started on a data analysis project on GenomeDK
+# Data analysis project on GenomeDK
+
+- Get an account
+- terminal
+- conda
+- set up to use jupyter remotely ()
+- vs code
+- Git account
+- Fork this repository (with README, directories, example notebooks and workflows)
+- Git as backup
+
+
 
 
 How to set up a github account and fork this repository...
