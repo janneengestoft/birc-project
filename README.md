@@ -26,11 +26,7 @@ Install Anaconda python your local machine.  If you are on a Windows machine you
 
 ## The Terminal
 
-If you are on a Mac or Limux machine, you can use to default Terminal application. 
-
-If you are on a Windwos macinne, you need to download and install the newest version of Powershell. You can [download it here](https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x64.msi). Double click the installer and. Now open the newly installed Powershell and run: `conda init powershell`. The adantage of PowerShell it that it works the same way as a Linux or OXS terminal.
-
-There are some exelent quick tutorials online that introduces the most basic commands in a Linux terminal. When ever I refer to "the terminal" below, it means PoweShell if you are on windows, and the Terminal app if you are on Mac.
+If you are on a Mac or Limux machine, you can use to default Terminal application. If you are on a Windwos macinne, you need to download and install the newest version of Powershell. You can [download it here](https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x64.msi). Double click the installer and. Now open the newly installed Powershell and run: `conda init powershell`. The adantage of PowerShell it that it works the same way as a Linux or OXS terminal. There are some exelent quick tutorials online that introduces the most basic commands in a Linux terminal. When ever I refer to "the terminal" below, it means PoweShell if you are on windows, and the Terminal app if you are on Mac.
 
 ## Conda
 
@@ -42,7 +38,7 @@ When you install Anaconda or Miniconda, Conda makes a single base environment fo
 
 The environmnet on your local machine does not need a lot of packages since it mainly serve to let you connect to the cluster. This creates the enviromnet and installs `openssl` and `slurm-jupyter` from my conda chanel:
 
-    conda create -n bircproject -c kaspermunch slurm-jupyter openssl
+    conda create -n bircproject -c kaspermunch slurm-jupyter
 
 Say yes (press Enter) when asked to install packages.
 
@@ -79,22 +75,19 @@ From now on you can log into the cluster from your local machine without being p
 
 ## Install Python on the cluster
 
-You need to install miniconda if you do not already have Anaconda Python installed in your cluster home dir. Log in to the cluster and run this command to download 
+You need to install miniconda if you do not already have Anaconda Python installed in your cluster home dir. Log in to the cluster and run this command to download a miniconda installer:
 
-run these commands in your cluster home dir (). They will download and install miniconda for you:
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  
+Then this command to download and install miniconda:
 
-  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  bash Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh
 
-Say yes when it asks if it should run conda init for you.
-
-
+Say yes when it asks if it should run `conda init` for you.
 
 ## Creating an environment on the cluster
 
-
-
-Usefull conda packages for bioinformatics / population genomic analysis
+Log in to the cluster and run this command to create a conda envionment for your project on the cluster. This environment should contain the packages that you need for your project. Such packages may inculde:
 
 - gwf (grid workflow)
 - jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert (jupyter)
@@ -110,17 +103,32 @@ Usefull conda packages for bioinformatics / population genomic analysis
 - msprime  (simulation)
 - scikit-allel vcftools (workign with VCF files)
 
-My standard environment
+I tend to hedge my bets and install all I could possibly end up needing:
 
-    conda create --name NAME -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda python=3.7 gwf jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify
+    conda create --name bircproject -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda -c python=3.7 slurm-jupyter jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify gwf
+
+If you end up needing more packages than you initialli included, you can easily install them later.
+
+
+## Jupyter on the cluster
+
+What is jupyter
+
+Connect from your local machine...
+
+https://github.com/kaspermunch/slurm-jupyter
+
 
 
 Enable matplotlib extensions for jupyter lab:
 
-    conda activavte NAME
+    conda activavte bircproject
 
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install jupyter-matplotlib
+
+<script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
+
 
 
 ## Backup on the cluster
@@ -129,18 +137,8 @@ link to the backup information
 
 ## Git and GitHub
 
+Fork this repository...
 
-## Jupyter
-
-<script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
-
-
-
-## Jupyter on the cluster
-
-https://github.com/kaspermunch/slurm-jupyter
-
-    git clone example notebooks
 
 ## VS Code on the cluster
 
