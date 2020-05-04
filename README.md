@@ -1,7 +1,9 @@
 # Data analysis project on GenomeDK
 
+Assumes some familiarity with Python and working with a terminal...
+
 - Get an account
-- terminal
+- terminal cheat sheet
 - conda
 - set up to use jupyter remotely ()
 - vs code
