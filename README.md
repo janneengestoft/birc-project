@@ -149,6 +149,12 @@ On the cluster using remote...
 
 ## Git and GitHub
 
+Briefly what git is. Link to git and github into pages
+
+Create a github account
+
+Add a ssh key form the cluster
+
 Fork this repository...
 
 As backup
