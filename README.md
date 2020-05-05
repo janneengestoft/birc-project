@@ -94,27 +94,51 @@ Log in to the cluster and run this command to create a conda envionment for your
 
 If you run the long command below you will have access to all (and probably much more then) you need:
 
-    conda create --name bircproject -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda -c python=3.7 slurm-jupyter jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify gwf
+    conda create --name bircproject -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda -c kaspermunch python=3.7 slurm-jupyter jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify gwf
 
 Should you end up needing more packages than you initially included, you can easily install them later.
 
+**Important:** Whenever you log into the cluster to work on your project, you should activate your `bircproject` environment like this:
+
+    conda activate bircproject
+    
+ When you environment is active it says `(bircproject)` on the commnad prompt instead of `(base)`.
 
 ## Jupyter on the cluster
 
 What is jupyter
 
-Connect from your local machine...
+You can run a jupyter notebook in your browser from a compute node on the cluster. This way your analysis runs on the file system where your data is, and you can keep data, code and documentation in one place. [slurm-jupyter](https://github.com/kaspermunch/slurm-jupyter) is a script that starts and connects to a jupyter server on compute note and forwards the web display to your local machine. It only works using the Chrome browser, so make sure you have that installed on your local machine. You already installed slurm-jupyter when you created your enviromnet, so only a few steps remain. 
 
-https://github.com/kaspermunch/slurm-jupyter
+To allow the `slurm-jupyter.py` script to do its magic, you have to do some configuration of jupyter. slurm-jupyter comes with a shell script that does that for you. Log into the cluster, activate your environment, and run the script like this:
 
+    config-slurm-jupyter.sh
+    
+It will ask about a lot of information. You can just press enter for all of them except when prompted for what password you want to use.
 
-
-Enable matplotlib extensions for jupyter lab:
-
-    conda activavte bircproject
+Finally, run these two comands to enable some plotting features in Jupyter Lab:
 
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install jupyter-matplotlib
+
+## Run slurm-jupyter.py
+
+Put slurm_jupyter.py somewhere in your PATH or run it like any other Python script. It has a lot of options that you can see like this:
+
+slurm-jupyter.py --help
+If your username on the cluster (eg. donald) is different from that on your local machine, you need to supply the that. You also need to specify an environment to activate on the cluster that has jupyter installed (our monkey environment):
+
+slurm-jupyter.py -u donald -e monkey
+To specify that you want 24g of memory and 3 cores, that you want jupyter to run in a conda environment called monkey, and that you want jupyter to run for up to 11 hours before slurm cancels your job, you can execute it like this:
+
+slurm-jupyter.py -u donald -m 24g -c 3 -e monkey -t 11:00:00
+When you run slurm-jupyter, it will connect to the cluster and write a script that it submits on the cluster queue. Once that script runs on a compute node, it starts the jupyter server for you. slurm-jupyter then opens connections so it can read the terminal output from jupyter and write it in the teminal of your local macine as it normally happens when you run jupyter. slurm-jupyter. It then forwards a port form the cluster to your local machine so you can see the jupyter web app in your local browser. The last thing it does is to open the Chrome browser and point it to the correct port.
+
+The first time Chrome opens the connection to the cluster it will give you an error page saying “Your connection is not private”. You then need to click “Advanced” and then “Proceed to localhost (unsafe)”. Then your file tree on the cluster should appear.
+
+To stop the server just press Ctrl-C and the script will do all the canceling, closing and cleanup on the cluster before it exits.
+
+
 
 <script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
 
