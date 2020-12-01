@@ -79,7 +79,7 @@ Say yes when it asks if it should run `conda init` for you.
 Log in to the cluster and run this command to create a conda envionment for your project on the cluster. This environment should contain the packages that you need for your project. Such packages may inculde:
 
 - **grid workflow:** [gwf](https://docs.gwf.app/)
-- **Jupyter:** [jupyter](https://jupyter.org/) [jupyterlab]](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
+- **Jupyter:** [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
 - **Vectors and data frames:** numpy pandas 
 - **Plotting**: matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly altair
 - **Maps:** cartopy shapely fiona
@@ -133,12 +133,21 @@ Fork this repository...
 
 As backup
 
+https://marklodato.github.io/visual-git-guide/index-en.html
+
 ## Backup on the cluster
 
 link to the backup information
 
+## Docs on cluster
+
+https://genome.au.dk/docs/getting-started/
+
 ## Building workflows with GWF
 
+https://gwf.app/
 
 ## Working with Jupyter notebooks
+
+https://www.dataquest.io/blog/jupyter-notebook-tutorial/
 
