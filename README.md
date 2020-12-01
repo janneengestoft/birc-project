@@ -105,17 +105,20 @@ Should you end up needing more packages than you initially included, you can eas
     
  When you environment is active it says `(bircproject)` on the commnad prompt instead of `(base)`.
 
+## Visual Studio Code
+
+If you did not do so when you installed Anaconda, you should download and instll Visual Studio Code. VS code is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed you can click the small green square in the lower left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have acces to the files in your home folder on the cluster.
+
 ## Jupyter on the cluster
 
-Jupyter is a notebook environment where you can easily combine text, code and plots. 
+Jupyter is a notebook environment where you can easily combine text, code and plots. You can read about Jupyter [here](https://jupyter.org/).
 
 You can run a jupyter notebook in your browser from a compute node on the cluster. This way your analysis runs on the file system where your data is, and you can keep data, code and documentation in one place. [slurm-jupyter](https://github.com/kaspermunch/slurm-jupyter) is a package with a script that starts and connects to a jupyter server on compute note and forwards the web display to your local machine. 
 
 You see the documentation on how to use and setup slurm-jupyter in the [documentation for the slurm-jupyter package](https://slurm-jupyter.readthedocs.io/en/latest/).
 
-## Visual Studio Code
+## Backup on the cluster
 
-If you did not do so when you installed Anaconda, you should download and instll Visual Studio Code. Once you have done that you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed you can click the small green square in the lower left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have acces to the files in your home folder on the cluster.
 
 ## Git and GitHub
 
