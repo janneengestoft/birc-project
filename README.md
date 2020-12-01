@@ -107,45 +107,15 @@ Should you end up needing more packages than you initially included, you can eas
 
 ## Jupyter on the cluster
 
-What is jupyter
+Jupyter is a notebook environment where you can easily combine text, code and plots. 
 
-You can run a jupyter notebook in your browser from a compute node on the cluster. This way your analysis runs on the file system where your data is, and you can keep data, code and documentation in one place. [slurm-jupyter](https://github.com/kaspermunch/slurm-jupyter) is a script that starts and connects to a jupyter server on compute note and forwards the web display to your local machine. It only works using the Chrome browser, so make sure you have that installed on your local machine. You already installed slurm-jupyter when you created your enviromnet, so only a few steps remain. 
+You can run a jupyter notebook in your browser from a compute node on the cluster. This way your analysis runs on the file system where your data is, and you can keep data, code and documentation in one place. [slurm-jupyter](https://github.com/kaspermunch/slurm-jupyter) is a package with a script that starts and connects to a jupyter server on compute note and forwards the web display to your local machine. 
 
-To allow the `slurm-jupyter.py` script to do its magic, you have to do some configuration of jupyter. slurm-jupyter comes with a shell script that does that for you. Log into the cluster, activate your environment, and run the script like this:
-
-    config-slurm-jupyter.sh
-    
-It will ask about a lot of information. You can just press enter for all of them except when prompted for what password you want to use.
-
-Finally, run these two comands to enable some plotting features in Jupyter Lab:
-
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install jupyter-matplotlib
-
-## Run slurm-jupyter.py
-
-Put slurm_jupyter.py somewhere in your PATH or run it like any other Python script. It has a lot of options that you can see like this:
-
-slurm-jupyter.py --help
-If your username on the cluster (eg. donald) is different from that on your local machine, you need to supply the that. You also need to specify an environment to activate on the cluster that has jupyter installed (our monkey environment):
-
-slurm-jupyter.py -u donald -e monkey
-To specify that you want 24g of memory and 3 cores, that you want jupyter to run in a conda environment called monkey, and that you want jupyter to run for up to 11 hours before slurm cancels your job, you can execute it like this:
-
-slurm-jupyter.py -u donald -m 24g -c 3 -e monkey -t 11:00:00
-When you run slurm-jupyter, it will connect to the cluster and write a script that it submits on the cluster queue. Once that script runs on a compute node, it starts the jupyter server for you. slurm-jupyter then opens connections so it can read the terminal output from jupyter and write it in the teminal of your local macine as it normally happens when you run jupyter. slurm-jupyter. It then forwards a port form the cluster to your local machine so you can see the jupyter web app in your local browser. The last thing it does is to open the Chrome browser and point it to the correct port.
-
-The first time Chrome opens the connection to the cluster it will give you an error page saying “Your connection is not private”. You then need to click “Advanced” and then “Proceed to localhost (unsafe)”. Then your file tree on the cluster should appear.
-
-To stop the server just press Ctrl-C and the script will do all the canceling, closing and cleanup on the cluster before it exits.
-
-
-
-<script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
+You see the documentation on how to use and setup slurm-jupyter in the [documentation for the slurm-jupyter package](https://slurm-jupyter.readthedocs.io/en/latest/).
 
 ## Visual Studio Code
 
-On the cluster using remote...
+If you did not do so when you installed Anaconda, you should download and instll Visual Studio Code. Once you have done that you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed you can click the small green square in the lower left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have acces to the files in your home folder on the cluster.
 
 ## Git and GitHub
 
