@@ -119,6 +119,7 @@ You see the documentation on how to use and setup slurm-jupyter in the [document
 
 ## Backup on the cluster
 
+Your files on the cluster are not backed up! If you want to backup files you need to put them in a folder called BACKUP.
 
 ## Git and GitHub
 
