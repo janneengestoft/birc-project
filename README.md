@@ -4,6 +4,8 @@ This repository serve as a walk-though of how to begin a data analysis project o
 
 The cluster is a very largre collection of computers with a shared file system. It does not have a screen and a keyboard you can go use. However, by connecting to the cluster from your own computer, you can create and edit files much like if they were on your own machine. The goal here is to take you thrugh all the steps required to make this possible.
 
+Before you can begin you need access to the cluster. Visit the [getting-started page](https://genome.au.dk/docs/getting-started/) on the cluster documentation to learn how.
+
 ## Install Python on your own machine
 
 If you have not done so already, you shuold a distribution of Python called *Anaconda*. Anaconda is simply an easy way of installing Python on Windows, macOS (Mac), and Linux, but it comes with the conda package management system (see below). To install Anaconda, head to [this](https://www.anaconda.com/download) site. Scroll down a bit and click the big green Download button where it says **Python 3.7 version**. When the download has completed, you should follow the platform specific instructions:
@@ -81,7 +83,7 @@ Log in to the cluster and run this command to create a conda envionment for your
 - **grid workflow:** [gwf](https://docs.gwf.app/)
 - **Jupyter:** [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
 - **Vectors and data frames:** numpy pandas 
-- **Plotting**: matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly altair
+- **Plotting**: matplotlib seaborn ipympl ipywidgets nodejs 
 - **Maps:** cartopy shapely fiona
 - **Statistics:** scipy statsmodels 
 - **Machine learning:** scikit-learn 
@@ -109,6 +111,10 @@ Should you end up needing more packages than you initially included, you can eas
 
 If you did not do so when you installed Anaconda, you should download and instll Visual Studio Code. VS code is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed you can click the small green square in the lower left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have acces to the files in your home folder on the cluster.
 
+## Backup on the cluster
+
+Your files on the cluster are not backed up! If you want to backup files you need to put them in a folder called BACKUP.
+
 ## Jupyter on the cluster
 
 Jupyter is a notebook environment where you can easily combine text, code and plots. You can read about Jupyter [here](https://jupyter.org/).
@@ -116,10 +122,6 @@ Jupyter is a notebook environment where you can easily combine text, code and pl
 You can run a jupyter notebook in your browser from a compute node on the cluster. This way your analysis runs on the file system where your data is, and you can keep data, code and documentation in one place. [slurm-jupyter](https://github.com/kaspermunch/slurm-jupyter) is a package with a script that starts and connects to a jupyter server on compute note and forwards the web display to your local machine. 
 
 You see the documentation on how to use and setup slurm-jupyter in the [documentation for the slurm-jupyter package](https://slurm-jupyter.readthedocs.io/en/latest/).
-
-## Backup on the cluster
-
-Your files on the cluster are not backed up! If you want to backup files you need to put them in a folder called BACKUP.
 
 ## Git and GitHub
 
@@ -134,14 +136,6 @@ Fork this repository...
 As backup
 
 https://marklodato.github.io/visual-git-guide/index-en.html
-
-## Backup on the cluster
-
-link to the backup information
-
-## Docs on cluster
-
-https://genome.au.dk/docs/getting-started/
 
 ## Building workflows with GWF
 
