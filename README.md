@@ -1,6 +1,6 @@
 # Data analysis project on GenomeDK
 
-<img src="https://munch-lab.org/images/laptop_cropped.jpg" align="right" width="300"  />
+<img src="https://munch-lab.org/images/laptop_cropped.jpg" align="right" width="400"  />
 
 This repository serves as a walk-through to begin a data analysis project on the [GenomeDK cluster](https://genome.au.dk/). Be that a PiB, BSc, MSc, or Ph.D. project. For more seasoned users, it can serve as a showcase of best practices. Some basic experience executing commands in a "terminal" is assumed.
 
