@@ -31,6 +31,8 @@ Your files on the cluster are not backed up! If you want to backup files, you ne
 
 ### GitHub
 
+<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="300"  />
+
 The page you are reading now is a GitHub repository. In addition to the documentation you are currently reading, it serves as a template for your project.
 
 Start by creating your own [github account](https://github.com/join) if you do not have one. Then follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub, so you do not need to type your password every time you sync with GitHub.
@@ -40,8 +42,6 @@ Now log in to your GitHub account on the web. Go to the [birc-project repository
 Once your own `birc-project` repository is ready, go to the repository front page. There you will find your own copy of this page. Read on from there.
 
 ### Git 
-
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="150"  />
 
 Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
 
