@@ -376,7 +376,7 @@ When you have created you conda environment (and whenever you add new packages t
 conda env export --from-history -f ./binder/environment.yml
 ```
 
-> Supervisor note: this also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to [Binder](https://mybinder.org/) and fill in the `https` address of the student repository.
+> Supervisor note: this also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to [Binder](https://mybinder.org/) and fill in the `https` address of the student repository: E.g. `https://github.com/username/birc-project`.
 
 ### Building workflows with GWF
 
