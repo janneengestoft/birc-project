@@ -204,8 +204,25 @@ That script will ask for a lot of information. You can just press `Enter` for al
 
 ### The project folder
 
+The project folder is a folder that is set up on the cluster to hold your project. I call it `projectfolder` here, but it will be called something sensible like
 
-### Cloning your git repository
+It is accessible to only you and anyone else you collaborate with (such as your supervisor). The project folder is in your home directory and should hold the following subfolders:
+
+    project_folder
+        /data
+        /people
+            /username
+            /supervisor_username
+
+The `project_folder/people/username` is your domain.
+
+is both a folder and an account.
+
+projectfolder/people/you is your domain
+
+Running with the `-A` account option.
+
+### Cloning your git repository to the cluster
 
 Go to your project folder and clone your repository:
 
