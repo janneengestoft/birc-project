@@ -287,26 +287,26 @@ scp ./file username@login.genome.au.dk:dir/
 
 ## Backup on the cluster
 
-**Your files on the cluster are not backed up!** If you want to backup files you need to put them in a folder called BACKUP.
+**Your files on the cluster are not backed up!** If you want to backup files you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
 
 
-## Git and GitHub
+## Git 
 
-Briefly what git and github is. 
+Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
+
+## GitHub
+
+GitHub is a free service where you can keep your git repository. Any files you push to GitHub are backed up. Make a habit of pushing all changes you make.
 
 Create a [github account](https://github.com/join) if you do not have one.
 
 Follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub so you do not need to type your password every time you sync with GitHub.
 
-
-Fork this repository...
-
-As backup
-
-https://marklodato.github.io/visual-git-guide/index-en.html
-
+Log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project) and fork it. Forking creates a clone of the birc-project repository on your own GitHub account, so you can add your project files to it and make it your own. To fork the repository, click the button in the top right corner that says `Fork`.
 
 ## Building workflows with GWF
+
+
 
 https://gwf.app/
 
