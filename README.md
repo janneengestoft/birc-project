@@ -1,6 +1,8 @@
 # Data analysis project on GenomeDK
 
-This repository serves as a walk-through to begin a data analysis project on the (GenomeDK cluster](https://genome.au.dk/). Be that a PiB, BSc, MSc, or Ph.D. project. For more seasoned users, it can serve as a showcase of best practices. Some basic experience executing commands in a "terminal" is assumed.
+<img src="https://cdn.worldvectorlogo.com/logos/birc.svg" align="right" width="200"  />
+
+This repository serves as a walk-through to begin a data analysis project on the [GenomeDK cluster](https://genome.au.dk/). Be that a PiB, BSc, MSc, or Ph.D. project. For more seasoned users, it can serve as a showcase of best practices. Some basic experience executing commands in a "terminal" is assumed.
 
 The cluster is a very large collection of computers with a shared file system. It does not have a screen and a keyboard you can go use. However, by connecting to the cluster from your computer, you can create and edit files much like if they were on your machine. The goal here is to take you through all the steps required to make this possible.
 
