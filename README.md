@@ -99,7 +99,7 @@ If you run the `hostname` command, you can see that you are on `fe1.genomedk.net
 
 ### Allow login without password
 
-<img src="https://atulhost.com/wp-content/uploads/2020/04/ssh.png" align="right" width="150" height="100" />
+<img src="https://atulhost.com/wp-content/uploads/2020/04/ssh.png" align="right" width="300" height="200" />
 
 You will need to log in to the cluster many many times, so you should set up your `ssh` connection to the cluster so you can connect securely without typing the password every time. You do not need to know *how* this works, but if you are interested, here is roughly how:
 
@@ -195,7 +195,7 @@ Should you end up needing more packages than you initially included, you can eas
 
 ### Set up Jupyter
 
-<img src="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" align="right" width="150" height="100" />
+<img src="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" align="right" width="200" height="200" />
 
 [Jupyter](https://jupyter.org/) is a notebook environment where you can easily combine text, code, and plots. Using the [slurm-jupyter](https://slurm-jupyter.readthedocs.io/en/latest) tool, you can run a jupyter notebook on the cluster but see it in the browser on your own machine. That way, your analysis runs on the cluster file system where your data is but the notebook interface is sent to your browser window. 
 
