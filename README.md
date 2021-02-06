@@ -16,7 +16,7 @@ Before we get to the cluster we need to get you properly set up on your own mach
 
 If you have not done so already, you should install a distribution of Python called *Anaconda*. Anaconda is not only an easy way of installing Python on Windows, Mac, and Linux, it also comes with the conda package management system (see below). To install Anaconda, head to [this](https://www.anaconda.com/download). When the download has completed, you must follow default installation.
 
-## The Terminal
+### The Terminal
 
 Most of the programs we will use in this course are command line applications. I.e. programs that are executed by writing their name and any arguments in a terminal rather than clicking on an icon and using a graphical user interface. There are many different programs that can serve as a terminal. If you have a Windows machine, you must use the *Anaconda Poweshell Prompt* (*not* the Anaconda Prompt and *not* the `CMD`). You installed Anaconda Powershell Prompt along with Anaconda Python. If you have a Mac, the terminal you will use is called *Terminal*. The Terminal application is pre-installed on Mac. So from now on, whenever we refer to the terminal, this means *Anaconda Poweshell Prompt* on Windows and *Terminal* on Mac. We will assume some familiarity with using a terminal and with executing commands on the command line. If you have not used a terminal before, or if you are a bit rusty, you should run through [this primer](https://lifehacker.com/5633909/who-needs-a-mouse-learn-to-use-the-command-line-for-almost-anything) before you go on.
 
@@ -93,6 +93,15 @@ cat ~/.ssh/id_rsa.pub | ssh username@login.genome.au.dk 'cat >> .ssh/authorized_
 
 From now on you can log into the cluster from your local machine without being prompted for a password.
 
+## Setting up your home on the cluster
+
+Now log in to the cluster
+
+```bash
+ssh username@login.genome.au.dk
+```
+
+(see, not password).
 
 ### Install Python on your cluster account
 
@@ -187,11 +196,9 @@ That says that you need at most one gigabyte of memory, that you need it for at 
 
 Now try to log out of the compute node by executing the `exit` command or by pressing `Ctrl-d`. If you execute the `hostname` command again you will get `fe1.genomedk.net` showing that you are back at the front-end mechine.
 
-
-<!-- 
 ### Queueing commands on the cluster
 
-Say the command above was a long-running command like some population genomic analysis. Then you cannot run it on the front-end. You need to submit it as a job to the cluster. When you do that, the job gets queued along with many other jobs, and as soon as the requested resources are available on the cluster, the job will start on one the many many machines. To submit a job, you must first create a file (a "batch script") that contains both the requested computer resources and the command you want to run. 
+For non-interactive work, it is better to submit your command as a job to the cluster. When you do that, the job gets queued along with many other jobs, and as soon as the requested resources are available on the cluster, the job will start on one the many many machines. To submit a job, you must first create a file (a "batch script") that contains both the requested computer resources and the command you want to run. 
 
 Create a file called `myscript.sh` with exactly this content:
 
@@ -202,7 +209,7 @@ Create a file called `myscript.sh` with exactly this content:
 #SBATCH --account=populationgenomics
 #SBATCH --job-name=firstjob
 
-echo "I can submit cluster jobs now!" > evennicer.txt
+echo "I can submit cluster jobs now!" > success.txt
 ```
 
 The first line says this is a bash script, the lines following three lines says that your job needs at most one gigabyte of memory, will run for at most one hour, that the expensenses should be billed to the project populationgenomics (which is our course). The fourth line gives the name of the name of the job. Here we have called it `firstjob`, but you should name it something sensible. 
@@ -228,10 +235,10 @@ If you want to cancel your this job before it finishes, you can use the `scancel
 scancel 34745986
 ```
 
-Once your job finishes, it has created the file `evennicer.txt` and written "I can submit cluster jobs now!" to it. So see that you can use the `cat` command:
+Once your job finishes, it has created the file `success.txt` and written "I can submit cluster jobs now!" to it. So see that you can use the `cat` command:
 
 ```bash
-cat evennicer.txt
+cat success.txt
 ```
 
 When you a program or script on the commandline it usually also prints some information in the terminal. When you run a job on the cluster there is no terminal to print to. Instead this is written to two files that you can read when the job finishes. In this case the fiels are called `firstjob.stdout` and `firstjob.stderr`. So see what is in them, you can use the `cat` command:
@@ -246,7 +253,7 @@ and
 cat firstjob.stderr
 ```
 
-That is basically it.  -->
+That is basically it. 
 
 ### How to copy files to and from the cluster
 
