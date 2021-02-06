@@ -31,7 +31,7 @@ Your files on the cluster are not backed up! If you want to backup files, you ne
 
 ### GitHub
 
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="300"  />
+<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="200"  />
 
 The page you are reading now is a GitHub repository. In addition to the documentation you are currently reading, it serves as a template for your project.
 
@@ -265,6 +265,8 @@ If you `cd` into `birc-directory` and run `ls`, you will see a number of folders
 Files in all those folders are under Git control, *except* files in the `steps` folder. Those files are not backed up in any way, but should instead be reproducible using the code and information in your other folders.
 
 ### Visual Studio Code
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2560px-Visual_Studio_Code_1.35_icon.svg.png" align="right" width="200" height="200" />
 
 If you did not do so when you installed Anaconda, you should download and install Visual Studio Code. VScode is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed, you can click the small green square in the lower-left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower-left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have access to the files in your home folder on the cluster.
 
