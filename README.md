@@ -364,11 +364,14 @@ scp ./file username@login.genome.au.dk:dir/
 
 ## Reproducible research
 
+### Keeping your conda environment
 
-## Building workflows with GWF
 
 
+### Building workflows with GWF
 
 https://gwf.app/
+
+### Managing notebooks
 
 
