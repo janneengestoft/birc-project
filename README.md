@@ -193,6 +193,7 @@ Should you end up needing more packages than you initially included, you can eas
 
 ### Set up Jupyter
 
+<img src="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" width="150" height="100" />
 
 <svg width="90" height="90">       
      <image xlink:href="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" width="90" height="90"/>    
