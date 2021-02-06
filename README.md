@@ -18,7 +18,7 @@ The page you are reading now is a GitHub repository. In addition to the document
 
 Start by creating your own [github account](https://github.com/join) if you do not have one. Then follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub so you do not need to type your password every time you sync with GitHub.
 
-Now log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project) and fork it. Forking creates your own copy of the birc-project repository on your GitHub account. That way you can add your project files to it and make it your own. To fork the repository, click the button in the top right corner that says `Fork`.
+Now log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project). In addition to this page, the repository contains a folder structure and config files, which serve as a good starting point for a project repository. You must now "fork" the repository. Forking creates your own copy of the birc-project repository under your own GitHub account. To fork the repository, click the button in the top right corner that says `Fork`.
 
 Once your own `birc-project` repository is ready, go to the repository front page. There you will find your own copy of this page. Read on from there.
 
