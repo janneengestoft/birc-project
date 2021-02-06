@@ -10,6 +10,23 @@ Before you can begin, you need access to the cluster. The cluster is called Geno
 
 On the cluster, you have a home folder that only you have can access. That is where you end up when you log in. Collaborative projects or projects that use or generate a lot of data projects belong in project folders. If you do a project, we will set up a dedicated project folder for this. 
 
+## Reproducible research
+
+Your project is a research project. Even if it is meant for training, think of it as training reproducibility too. Your efforts, experiences, results, and developed expertise is valuable to all that comes after you. So do not make your project a dead end; make it a shoulder to stand on.
+
+Reproducibility basically means that anyone should be able to do *exactly* what you did to *exactly* reproduce your results. They should be able to get the same results in terms of numbers, plots, etc. This requires care and attention to detail, but it is not difficult. This page will help you get set up to do reproducible research.
+
+## Best practices on the cluster
+
+In the world of data projects, there are three kinds of data files. 
+
+1. Those representing the  input to your project (sequencing reads, raw data, etc.)
+2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
+3. Those representing intermediary steps to get from files of type 1 to files of type 2.
+
+Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saves indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
+
+
 ## Backup and version control
 
 Your files on the cluster are not backed up! If you want to backup files, you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
@@ -204,23 +221,19 @@ That script will ask for a lot of information. You can just press `Enter` for al
 
 ### The project folder
 
-The project folder is a folder that is set up on the cluster to hold your project. I call it `projectfolder` here, but it will be called something sensible like
+The project folder is a folder that is set up on the cluster to hold your project. I call it `projectfolder` here, but it will be called something sensible like `baboonadmixture`.
 
 It is accessible to only you and anyone else you collaborate with (such as your supervisor). The project folder is in your home directory and should hold the following subfolders:
 
-    project_folder
+    projectfolder
         /data
         /people
             /username
             /supervisor_username
 
-The `project_folder/people/username` is your domain.
+The `projectfolder/people/username` is your domain. This is where you have all the files that relates to your project.
 
-is both a folder and an account.
-
-projectfolder/people/you is your domain
-
-Running with the `-A` account option.
+The name of the project folder is is also the name of the account that you should bill any work on the cluster to. When you run `srun`, `sbatch` or `slurm-jupyter` you myst specify that project name using the `-A` or `--account` options (see below for more details on that). 
 
 ### Cloning your git repository to the cluster
 
@@ -231,6 +244,11 @@ git clone git@github.com:username/birc-project.git
 ```
 (replace `username` with your GitHub username).
 
+If you `cd` into `birc-directory` and run `ls`, you will see a number of folders.
+
+
+
+
 ### Visual Studio Code
 
 If you did not do so when you installed Anaconda, you should download and install Visual Studio Code. VScode is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed, you can click the small green square in the lower-left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower-left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have access to the files in your home folder on the cluster.
@@ -240,10 +258,10 @@ If you did not do so when you installed Anaconda, you should download and instal
 Jupyter runs best in the [Chrome browser](https://www.google.com/chrome). For the best experience, install that before you go on. It does not need to be your default browser. `slurm-jupyter` will use it anyway. Now make sure you are on your own machine and that your `popgen` environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:
 
 ```bash
-slurm-jupyter -u usernanme -A populationgenomics -e jupyter -m 1g -t 3h --run notebook
+slurm-jupyter -u usernanme -A projectfolder -e bircproject
 ```
 
-(replace `username` with your cluster user name)
+(replace `username` with your cluster user name, `projectfolder` with your project folder name, and `bircproject` with whatever you called your conda environment on the cluster).
 
 Watch the terminal to see what is going on. After a while, a jupyter notebook should show up in your browser window. The first time you do this, your browser may refuse to show jupyter because the connection is unsafe. In Safari you proceed to allow this. In Chrome, you can simply type the characters "thisisunsafe" while in the Chrome window:
 
@@ -273,11 +291,12 @@ Create a file called `myscript.sh` with exactly this content:
 #!/bin/bash
 #SBATCH --mem=1gb
 #SBATCH --time=01:00:00
-#SBATCH --account=populationgenomics
+#SBATCH --account=projectfolder
 #SBATCH --job-name=firstjob
 
 echo "I can submit cluster jobs now!" > success.txt
 ```
+(replace `projectfolder` with your project folder name)
 
 The first line says this is a bash script, the lines following three lines say that your job needs at most one gigabyte of memory, will run for at most one hour, that the expenses should be billed to the project populationgenomics (which is our course). The fourth line gives the name of the job. Here we have called it `firstjob`, but you should name it something sensible. 
 
