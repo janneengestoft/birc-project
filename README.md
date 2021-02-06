@@ -126,24 +126,24 @@ Follow the default installation, and say **yes** when it asks you if it should r
 
 Log in to the cluster and run this command to create a conda envionment for your project on the cluster. This environment should contain the packages that you need for your project. Such packages may inculde:
 
-- **grid workflow:** [gwf](https://docs.gwf.app/)
-- **Jupyter:** [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
-- **Vectors and data frames:** numpy pandas 
-- **Plotting**: matplotlib seaborn ipympl ipywidgets nodejs 
-- **Maps:** cartopy shapely fiona
-- **Statistics:** scipy statsmodels 
-- **Machine learning:** scikit-learn 
-- **Trees:** ete3
-- **Misc bioinformatics**: scikit-bio, biopython
-- **Storage and indexing:** pyfaidx tabix samtools h5py
-- **Graphs:** networkx
-- **Gene annotation:** mygene
-- **Simulation:** msprime
-- **VCF files:** scikit-allel vcftools
+- Grid workflow: [gwf](https://docs.gwf.app/)
+- Jupyter: [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
+- Vectors and data frames: numpy pandas 
+- Plotting: matplotlib seaborn ipympl ipywidgets nodejs 
+- Maps: cartopy shapely fiona
+- Statistics: scipy statsmodels 
+- Machine learning: scikit-learn 
+- Trees: ete3
+- Misc bioinformatics**: scikit-bio, biopython
+- Storage and indexing: pyfaidx tabix samtools h5py
+- Graphs: networkx
+- Gene annotation: mygene
+- Simulation: msprime
+- VCF files: scikit-allel vcftools
 
 If you run the long command below you will have access to all (and probably much more then) you need:
 
-    conda create --name bircproject -c gwforg -c etetoolkit -c anaconda -c conda-forge -c bioconda -c kaspermunch python=3.7 slurm-jupyter jupyter jupyterlab jupyter_contrib_nbextensions rise nbconvert numpy scipy pandas h5py scikit-learn scikit-bio statsmodels matplotlib seaborn ipympl ipywidgets nodejs mpld3 plotly altair cartopy shapely fiona ete3 biopython pyfaidx networkx mygene msprime openblas scikit-allel pylint vcftools tabix samtools pip setuptools wheel twine conda-verify gwf
+    conda create --name bircproject -c gwforg -c conda-forge -c bioconda -c kaspermunch slurm-jupyter gwf pip jupyter jupyterlab numpy pandas matplotlib seaborn ipympl biopython pyfaidx scikit-allel pylint vcftools tabix samtools 
 
 Should you end up needing more packages than you initially included, you can easily install them later.
 
