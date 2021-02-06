@@ -70,7 +70,7 @@ When you do, you are prompted for the password for your cluster username. Enter 
 
 If you run the `hostname` command, you can see that you are on `fe1.genomedk.net`. Now log out of the cluster again. You do that using the `exit` command or by pressing `Ctrl-d`. Now you are back on your own machine. Try `hostname` again and see what your own machine is called.
 
-### Allow login without password
+### Allow log in without password
 
 <img src="https://atulhost.com/wp-content/uploads/2020/04/ssh.png" align="right" width="300" height="200" />
 
