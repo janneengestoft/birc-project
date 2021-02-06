@@ -18,7 +18,7 @@ The page you are reading now is a GitHub repository. In addition to the document
 
 Start by creating your own [github account](https://github.com/join) if you do not have one. Then follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub so you do not need to type your password every time you sync with GitHub.
 
-Now log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project) and fork it. Forking creates a clone of the birc-project repository on your own GitHub account, so you can add your project files to it and make it your own. To fork the repository, click the button in the top right corner that says `Fork`.
+Now log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project) and fork it. Forking creates your own copy of the birc-project repository on your GitHub account. That way you can add your project files to it and make it your own. To fork the repository, click the button in the top right corner that says `Fork`.
 
 ### Git 
 
@@ -197,6 +197,18 @@ config-slurm-jupyter.sh
 That script will ask about a lot of information. You can just press enter for all of them **except** when prompted for what password you want to use: Then you must to type your cluster password.
 
 ## Working on the cluster
+
+### The project folder
+
+
+### Cloning your git repository
+
+Go to your project folder and clone your repository:
+
+```bash
+git clone git@github.com:username/birc-project.git
+```
+(replace `username` with your GitHub username).
 
 ### Visual Studio Code
 
