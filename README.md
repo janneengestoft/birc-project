@@ -250,10 +250,12 @@ If you `cd` into `birc-directory` and run `ls`, you will see a number of folders
 - `docs`: stores text files explaining how you set up your project and analyzes.
 - `sandbox`: stores experiments that are not yet part of your project workflow.
 - `scripts`: stores Python scripts that that produces intermediate and final results.
-- `notebooks`: stores Juptyer notebooks.
 - `steps`: stores intermediary files ("steps" on the way to final results).
-- `figures`: stores plots and figures you make.
+- `notebooks`: stores Juptyer notebooks with code, documentation, and results.
+- `figures`: stores result plots and figures you make.
 - `results`: stores the small result files of your project (tens of megabases).
+
+Files in all those folders are under Git control, *except* files in the `steps` folder. Those files are not backed up in any way, but should instead be reproducible using the code and information in your other folders.
 
 ### Visual Studio Code
 
