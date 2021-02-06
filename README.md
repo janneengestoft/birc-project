@@ -127,15 +127,15 @@ Follow the default installation, and say **yes** when it asks you if it should r
 Log in to the cluster and run this command to create a conda envionment for your project on the cluster. This environment should contain the packages that you need for your project. Such packages may inculde:
 
 - Grid workflow: [gwf](https://docs.gwf.app/)
-- Jupyter: [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/) jupyter_contrib_nbextensions rise nbconvert (jupyter)
-- Vectors and data frames: numpy pandas 
-- Plotting: matplotlib seaborn ipympl ipywidgets nodejs 
-- Maps: cartopy shapely fiona
-- Statistics: scipy statsmodels 
-- Machine learning: scikit-learn 
-- Trees: ete3
-- Misc bioinformatics**: scikit-bio, biopython
-- Storage and indexing: pyfaidx tabix samtools h5py
+- Jupyter: [jupyter](https://jupyter.org/) [jupyterlab](https://jupyter.org/)
+- Vectors and data frames: [numpy](https://numpy.org/) [pandas](https://pandas.pydata.org/docs/) 
+- Plotting: [matplotlib](https://matplotlib.org/) [seaborn](https://seaborn.pydata.org/) [ipympl](https://github.com/matplotlib/ipympl) 
+- Maps: [cartopy](https://scitools.org.uk/cartopy/docs/latest/) [fiona](https://github.com/Toblerity/Fiona)
+- Statistics: [scipy](https://www.scipy.org/) [statsmodels](https://www.statsmodels.org/stable/index.html)
+- Machine learning: [scikit-learn](https://scikit-learn.org/stable/)
+- Trees: [ete3](http://etetoolkit.org/)
+- Misc bioinformatics: [scikit-bio](http://scikit-bio.org/), [biopython](https://biopython.org/)
+- Storage and indexing: [pyfaidx](https://pythonhosted.org/pyfaidx/) [samtools](http://www.htslib.org/) h5py
 - Graphs: networkx
 - Gene annotation: mygene
 - Simulation: msprime
