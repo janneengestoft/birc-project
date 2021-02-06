@@ -246,6 +246,7 @@ If you `cd` into `birc-directory` and run `ls`, you will see a number of folders
 
 - `data`: stores *small* (tens of megabases) data files you want to keep .
 - `docs`: stores text files explaining how you set up your project and analyzes.
+- `binder`: stores an `environment.yml` files documenting your conda environment used in the project.
 - `sandbox`: stores experiments that are not yet part of your project workflow.
 - `scripts`: stores Python scripts that that produces intermediate and final results.
 - `steps`: stores intermediary files ("steps" on the way to final results).
@@ -361,12 +362,21 @@ To copy a file called `file` in the current folder on your own machine to a fold
 scp ./file username@login.genome.au.dk:dir/
 ```
 
-
 ## Reproducible research
+
+
+More detail on what that means...
+
 
 ### Keeping your conda environment
 
+When you have created you conda environment (and whenever you add new packages to your environment), you should update the `environment.yml` file in the binder directory. That file allows anyone to create the same conda environment, ensuring that they have all the packages needed to run your code. You do that like this:
 
+```bash
+conda env export --from-history -f ./binder/environment.yml
+```
+
+> Supervisor note: this also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to [Binder](https://mybinder.org/) and fill in the `https` address of the student repository.
 
 ### Building workflows with GWF
 
