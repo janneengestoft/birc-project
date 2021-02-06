@@ -136,16 +136,16 @@ Log in to the cluster and run this command to create a conda envionment for your
 - Trees: [ete3](http://etetoolkit.org/)
 - Misc bioinformatics: [scikit-bio](http://scikit-bio.org/), [biopython](https://biopython.org/)
 - Storage and indexing: [pyfaidx](https://pythonhosted.org/pyfaidx/) [samtools](http://www.htslib.org/) h5py
-- Graphs: networkx
-- Gene annotation: mygene
-- Simulation: msprime
-- VCF files: scikit-allel vcftools
+- Graphs: [networkx](https://networkx.org/)
+- Gene annotation: [mygene](https://mygene.info/)
+- Simulation: [msprime](https://msprime.readthedocs.io/en/stable/)
+- VCF files: [scikit-allel](https://scikit-allel.readthedocs.io/en/stable/) [vcftools](https://vcftools.github.io/index.html)
 
-If you run the long command below you will have access to all (and probably much more then) you need:
+The command below should install what you need for a project in population genetics:
 
     conda create --name bircproject -c gwforg -c conda-forge -c bioconda -c kaspermunch slurm-jupyter gwf pip jupyter jupyterlab numpy pandas matplotlib seaborn ipympl biopython pyfaidx scikit-allel pylint vcftools tabix samtools 
-
-Should you end up needing more packages than you initially included, you can easily install them later.
+    
+Should you end up needing more packages than you initially included, you can easily install them later. E.g. to see how to install `cartopy` using `conda`, just google "conda cartopy". The top link in structs you to install it like this: `conda install -c conda-forge cartopy`.
 
 **Important:** Whenever you log into the cluster to work on your project, you should activate your `bircproject` environment like this:
 
