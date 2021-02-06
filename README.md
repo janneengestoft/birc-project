@@ -292,11 +292,12 @@ scp ./file username@login.genome.au.dk:dir/
 
 ## Git and GitHub
 
-Briefly what git is. Link to git and github into pages
+Briefly what git and github is. 
 
-Create a github account
+Create a [github account](https://github.com/join) if you do not have one.
 
-Add a ssh key form the cluster
+Follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub so you do not need to type your password every time you sync with GitHub.
+
 
 Fork this repository...
 
