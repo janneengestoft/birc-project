@@ -59,6 +59,8 @@ Most of the programs we will use in this course are command-line applications. I
 
 ### Conda environments
 
+<img src="https://docs.conda.io/en/latest/_images/conda_logo.svg" align="right" width="200" height="100" />
+
 You need to install packages and programs for use in your analyses and pipelines. Sometimes, however, the versions of packages you need for one project conflicts with the versions you need for other projects that you work on in parallel. Such conflicts seem like an unsolvable problem. Would it not be fantastic if you could create a small world insulated from the rest of your Anaconda installation. Then that small world would only contain the packages you needed for a single project. If each project had its own isolated world, then there would be no such conflicts. Fortunately, there is a tool that lets you do just that, and its name is Conda. The small worlds that Conda creates are called "environments," and you can create as many as you like. You can then switch between them as you switch between your bioinformatics projects. Conda also downloads and installs the packages for you, and it makes sure that the packages you install in each environment are compatible. It even makes sure that packages needed by packages (dependencies) are installed too.  By creating an environment for each project, the libraries installed for each project do not interfere.
 
 ## Create an environment on your local machine
