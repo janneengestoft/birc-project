@@ -20,6 +20,8 @@ Start by creating your own [github account](https://github.com/join) if you do n
 
 Now log into your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project) and fork it. Forking creates your own copy of the birc-project repository on your GitHub account. That way you can add your project files to it and make it your own. To fork the repository, click the button in the top right corner that says `Fork`.
 
+Once your own `birc-project` repository is ready, go to the repository front page. There you will find your own copy of this page. Read on from there.
+
 ### Git 
 
 Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
