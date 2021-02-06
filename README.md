@@ -10,8 +10,6 @@ Before you can begin, you need access to the cluster. The cluster is called Geno
 
 On the cluster, you have a home folder that only you have can access. That is where you end up when you log in. Collaborative projects or projects that use or generate a lot of data projects belong in project folders. If you do a project, we will set up a dedicated project folder for this. 
 
-## Reproducible research
-
 Your project is a research project. Even if it is meant for training, think of it as training reproducibility too. Your efforts, experiences, results, and developed expertise is valuable to all that comes after you. So do not make your project a dead end; make it a shoulder to stand on.
 
 Reproducibility basically means that anyone should be able to do *exactly* what you did to *exactly* reproduce your results. They should be able to get the same results in terms of numbers, plots, etc. This requires care and attention to detail, but it is not difficult. This page will help you get set up to do reproducible research.
@@ -362,6 +360,10 @@ To copy a file called `file` in the current folder on your own machine to a fold
 ```bash
 scp ./file username@login.genome.au.dk:dir/
 ```
+
+
+## Reproducible research
+
 
 ## Building workflows with GWF
 
