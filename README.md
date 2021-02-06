@@ -122,7 +122,7 @@ Follow the default installation, and say **yes** when it asks you if it should r
 **NP:** Now log out out of the cluster and log back in. This is needed to make the `conda` command available to you.
 
 
-## Creating an environment on the cluster
+### Creating an environment on the cluster
 
 Log in to the cluster and run this command to create a conda envionment for your project on the cluster. This environment should contain the packages that you need for your project. Such packages may inculde:
 
@@ -178,11 +178,27 @@ config-slurm-jupyter.sh
 
 That script will ask about a lot of information. You can just press enter for all of them **except** when prompted for what password you want to use: Then you must to type your cluster password.
 
+## Working on the cluster
 
-## Visual Studio Code
+### Visual Studio Code
 
 If you did not do so when you installed Anaconda, you should download and instll Visual Studio Code. VS code is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed you can click the small green square in the lower left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have acces to the files in your home folder on the cluster.
 
+### How to run a Jupyter notebook on the cluster
+
+Jupyter runs best in the [Chrome browser](https://www.google.com/chrome). For the best experience, install that before you go on. It does not need to be your default browser. `slurm-jupyter` will use it anyway. Now make sure you are on your own machine and that your `popgen` environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:
+
+```bash
+slurm-jupyter -u usernanme -A populationgenomics -e jupyter -m 1g -t 3h --run notebook
+```
+
+(replace `username` with your cluster user name)
+
+Watch the terminal to see what is going on. After a while a jupyter notebook should show up in your browser window. The first time you do this, your browser may refuse to show jupyter because the connection is unsafe. In Safari you proceed to allow this. In Chrome, you can simply type the characters "thisisunsafe" while in the Chrome window:
+
+<img src="img/thisisunsafe.png" alt="image" width="450"/>
+
+Once ready, jupyter may ask for your cluster password. To close the jupyter notebook, press `Ctrl-c` in the terminal. Closing the browser window does **not** close down the jupyter on the cluster. You can [read this tutorial](https://www.dataquest.io/blog/jupyter-notebook-tutorial/) to learn how to use a jupyter notebook.
 
 ### Running interactive commands on the cluster
 
@@ -269,27 +285,9 @@ To copy a file called `file` in the current folder on your own machine to a fold
 scp ./file username@login.genome.au.dk:dir/
 ```
 
-### How to run a Jupyter notebook on the cluster
-
-Jupyter runs best in the [Chrome browser](https://www.google.com/chrome). For the best experience, install that before you go on. It does not need to be your default browser. `slurm-jupyter` will use it anyway. Now make sure you are on your own machine and that your `popgen` environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:
-
-```bash
-slurm-jupyter -u usernanme -A populationgenomics -e jupyter -m 1g -t 3h --run notebook
-```
-
-(replace `username` with your cluster user name)
-
-Watch the terminal to see what is going on. After a while a jupyter notebook should show up in your browser window. The first time you do this, your browser may refuse to show jupyter because the connection is unsafe. In Safari you proceed to allow this. In Chrome, you can simply type the characters "thisisunsafe" while in the Chrome window:
-
-<img src="img/thisisunsafe.png" alt="image" width="450"/>
-
-Once ready, jupyter may ask for your cluster password. To close the jupyter notebook, press `Ctrl-c` in the terminal. Closing the browser window does **not** close down the jupyter on the cluster. You can [read this tutorial](https://www.dataquest.io/blog/jupyter-notebook-tutorial/) to learn how to use a jupyter notebook.
-
-
 ## Backup on the cluster
 
-Your files on the cluster are not backed up! If you want to backup files you need to put them in a folder called BACKUP.
-
+**Your files on the cluster are not backed up!** If you want to backup files you need to put them in a folder called BACKUP.
 
 
 ## Git and GitHub
@@ -306,11 +304,9 @@ As backup
 
 https://marklodato.github.io/visual-git-guide/index-en.html
 
+
 ## Building workflows with GWF
 
 https://gwf.app/
 
-## Working with Jupyter notebooks
-
-https://www.dataquest.io/blog/jupyter-notebook-tutorial/
 
