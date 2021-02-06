@@ -266,7 +266,7 @@ Files in all those folders are under Git control, *except* files in the `steps` 
 
 ### Visual Studio Code
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2560px-Visual_Studio_Code_1.35_icon.svg.png" align="right" width="200" height="200" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2560px-Visual_Studio_Code_1.35_icon.svg.png" align="right" width="100" height="100" />
 
 If you did not do so when you installed Anaconda, you should download and install Visual Studio Code. VScode is great for developing scripts and editing text files. Once you have installed VS code, you should install the "Remote Development" extension. You do that by clicking the funny squares in the left bar and search for "Remote Development". Once installed, you can click the small green square in the lower-left corner to connect to the cluster. Select "Connect current window to host" then "Add new SSH host", then type `<your_cluster_username>@login.genome.au.dk`, then select the config file `.ssh/config`. Now you can click the small green square in the lower-left corner to connect to the cluster by selecting `login.genome.au.dk`. It may take a bit, but once it is done installing a remote server, you will have access to the files in your home folder on the cluster.
 
