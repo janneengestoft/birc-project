@@ -246,8 +246,14 @@ git clone git@github.com:username/birc-project.git
 
 If you `cd` into `birc-directory` and run `ls`, you will see a number of folders.
 
-
-
+- `data`: stores *small* (tens of megabases) data files you want to keep .
+- `docs`: stores text files explaining how you set up your project and analyzes.
+- `sandbox`: stores experiments that are not yet part of your project workflow.
+- `scripts`: stores Python scripts that that produces intermediate and final results.
+- `notebooks`: stores Juptyer notebooks.
+- `steps`: stores intermediary files ("steps" on the way to final results).
+- `figures`: stores plots and figures you make.
+- `results`: stores the small result files of your project (tens of megabases).
 
 ### Visual Studio Code
 
