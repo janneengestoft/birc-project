@@ -193,6 +193,11 @@ Should you end up needing more packages than you initially included, you can eas
 
 ### Set up Jupyter
 
+
+<svg width="90" height="90">       
+     <image xlink:href="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" width="90" height="90"/>    
+</svg>
+
 [Jupyter](https://jupyter.org/) is a notebook environment where you can easily combine text, code, and plots. Using the [slurm-jupyter](https://slurm-jupyter.readthedocs.io/en/latest) tool, you can run a jupyter notebook on the cluster but see it in the browser on your own machine. That way, your analysis runs on the cluster file system where your data is but the notebook interface is sent to your browser window. 
 
 The first thing you need to do is create a separate conda environment that has jupyter installed. Do not worry about this extra environment. You will not be using it directly. We just need it to be able to run jupyter notebooks in class. 
