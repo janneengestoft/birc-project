@@ -41,7 +41,7 @@ Once your own `birc-project` repository is ready, go to the repository front pag
 
 ### Git 
 
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="150" height="150" />
+<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="150"  />
 
 Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
 
