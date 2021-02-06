@@ -41,6 +41,8 @@ Once your own `birc-project` repository is ready, go to the repository front pag
 
 ### Git 
 
+<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="150" height="150" />
+
 Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
 
 Any files you push to GitHub are backed up. Make a habit of pushing all changes you make.
@@ -63,7 +65,7 @@ Most of the programs we will use in this course are command-line applications. I
 
 You need to install packages and programs for use in your analyses and pipelines. Sometimes, however, the versions of packages you need for one project conflicts with the versions you need for other projects that you work on in parallel. Such conflicts seem like an unsolvable problem. Would it not be fantastic if you could create a small world insulated from the rest of your Anaconda installation. Then that small world would only contain the packages you needed for a single project. If each project had its own isolated world, then there would be no such conflicts. Fortunately, there is a tool that lets you do just that, and its name is Conda. The small worlds that Conda creates are called "environments," and you can create as many as you like. You can then switch between them as you switch between your bioinformatics projects. Conda also downloads and installs the packages for you, and it makes sure that the packages you install in each environment are compatible. It even makes sure that packages needed by packages (dependencies) are installed too.  By creating an environment for each project, the libraries installed for each project do not interfere.
 
-## Create an environment on your local machine
+### Create an environment on your local machine
 
 When you install Anaconda or Miniconda, Conda makes a single base environment for you. It is called "base," and this is why it says "(base)" at your terminal prompt. You need a conda environment for your project on both your local machine and on the cluster. Let us call both of them 'bircproject' (you can call it anything you like).
 
