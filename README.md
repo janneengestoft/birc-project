@@ -192,18 +192,6 @@ config-slurm-jupyter.sh
 
 That script will ask for a lot of information. You can just press `Enter` for all of them **except** when prompted for what password you want to use: Then, you must type your cluster password.
 
-
-## Best practices on the cluster
-
-In the world of data projects, there are three kinds of data files. 
-
-1. Those representing the  input to your project (sequencing reads, raw data, etc.)
-2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
-3. Those representing intermediary steps to get from files of type 1 to files of type 2.
-
-Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saves indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
-
-
 ## Backup and version control
 
 Your files on the cluster are not backed up! If you want to backup files, you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
@@ -377,11 +365,20 @@ scp ./file username@login.genome.au.dk:dir/
 
 ## Reproducible research
 
-
 More detail on what that means...
 
+### Do not save data files, save how you made them
 
-### Keeping your conda environment
+In the world of data projects, there are three kinds of data files. 
+
+1. Those representing the  input to your project (sequencing reads, raw data, etc.)
+2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
+3. Those representing intermediary steps to get from files of type 1 to files of type 2.
+
+Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saved indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
+
+
+### Export your conda environment
 
 When you have created you conda environment (and whenever you add new packages to your environment), you should update the `environment.yml` file in the binder directory. That file allows anyone to create the same conda environment, ensuring that they have all the packages needed to run your code. You do that like this:
 
