@@ -44,7 +44,7 @@ The environment on your local machine does not need a lot of packages since it m
 
 Say yes (press Enter) when asked to install packages.
 
-### AU VPN
+### VPN
 
 To be able to connect to the cluster, you need to on the AU internal network. You can do that by either physically being on campus or by connecting to the AU network using VPN. To install VPN, use the instructions [on this page](https://studerende.au.dk/it-support/vpn/). Before you can *use* the VPN, you also need to enable two-step verification. You can see how to do that on the same page. If you are not physically on campus, you need to activate your VPN before you can log in to the cluster. Your password for VPN is the same as you use to log on to access Blackboard.
 
