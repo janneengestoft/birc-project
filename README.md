@@ -16,39 +16,6 @@ Your project is a research project. Even if it is meant for training, think of i
 
 Reproducibility basically means that anyone should be able to do *exactly* what you did to *exactly* reproduce your results. They should be able to get the same results in terms of numbers, plots, etc. This requires care and attention to detail, but it is not difficult. This page will help you get set up to do reproducible research.
 
-## Best practices on the cluster
-
-In the world of data projects, there are three kinds of data files. 
-
-1. Those representing the  input to your project (sequencing reads, raw data, etc.)
-2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
-3. Those representing intermediary steps to get from files of type 1 to files of type 2.
-
-Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saves indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
-
-
-## Backup and version control
-
-Your files on the cluster are not backed up! If you want to backup files, you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
-
-### GitHub
-
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="200"  />
-
-The page you are reading now is a GitHub repository. In addition to the documentation you are currently reading, it serves as a template for your project.
-
-Start by creating your own [github account](https://github.com/join) if you do not have one. Then follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub, so you do not need to type your password every time you sync with GitHub.
-
-Now log in to your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project). In addition to this page, the repository contains a folder structure and config files, which serve as a good starting point for a project repository. You must now "fork" the repository. Forking creates your own copy of the `birc-project` repository under your own GitHub account. To fork the repository, click the button in the top right corner that says `Fork`.
-
-Once your own `birc-project` repository is ready, go to the repository front page. There you will find your own copy of this page. Read on from there.
-
-### Git 
-
-Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
-
-Any files you push to GitHub are backed up. Make a habit of pushing all changes you make.
-
 ## Setting up your own machine
 
 Before we get to the cluster, we need to get you properly set up on your own machine.
@@ -224,6 +191,40 @@ config-slurm-jupyter.sh
 ```
 
 That script will ask for a lot of information. You can just press `Enter` for all of them **except** when prompted for what password you want to use: Then, you must type your cluster password.
+
+
+## Best practices on the cluster
+
+In the world of data projects, there are three kinds of data files. 
+
+1. Those representing the  input to your project (sequencing reads, raw data, etc.)
+2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
+3. Those representing intermediary steps to get from files of type 1 to files of type 2.
+
+Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saves indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
+
+
+## Backup and version control
+
+Your files on the cluster are not backed up! If you want to backup files, you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
+
+### GitHub
+
+<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="200"  />
+
+The page you are reading now is a GitHub repository. In addition to the documentation you are currently reading, it serves as a template for your project.
+
+Start by creating your own [github account](https://github.com/join) if you do not have one. Then follow the instructions [on this page](https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/) to add ssh keys to GitHub, so you do not need to type your password every time you sync with GitHub.
+
+Now log in to your GitHub account on the web. Go to the [birc-project repository](https://github.com/kaspermunch/birc-project). In addition to this page, the repository contains a folder structure and config files, which serve as a good starting point for a project repository. You must now "fork" the repository. Forking creates your own copy of the `birc-project` repository under your own GitHub account. To fork the repository, click the button in the top right corner that says `Fork`.
+
+Once your own `birc-project` repository is ready, go to the repository front page. There you will find your own copy of this page. Read on from there.
+
+### Git 
+
+Git is a version control tool. Learn basic [Git](https://git-scm.com/). [These tutorials](https://www.atlassian.com/git) are good. Once you have some idea how it works, there is a cheat sheep [here](https://training.github.com/downloads/github-git-cheat-sheet/) are some good visual guides [here](https://ndpsoftware.com/git-cheatsheet.html) and [here](https://marklodato.github.io/visual-git-guide/index-en.html)
+
+Any files you push to GitHub are backed up. Make a habit of pushing all changes you make.
 
 ## Working on the cluster
 
