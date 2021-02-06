@@ -10,7 +10,7 @@ On the cluster you have a home folder that only you have access to. That is wher
 
 ## Backup and version control
 
-**Your files on the cluster are not backed up!** If you want to backup files you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
+Your files on the cluster are not backed up! If you want to backup files you need to put them in a folder called BACKUP. However, a better way is to use git and GitHub (see below).
 
 ### GitHub
 
