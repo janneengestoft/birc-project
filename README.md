@@ -150,6 +150,7 @@ Log in to the cluster and run this command to create a conda environment for you
 - Storage and indexing: [pyfaidx](https://pythonhosted.org/pyfaidx/) [samtools](http://www.htslib.org/) h5py
 - Graphs: [networkx](https://networkx.org/)
 - Gene annotation: [mygene](https://mygene.info/)
+- Pathways and enrichment: [pypathway](https://nadp.me/PyPathway/)
 - Simulation: [msprime](https://msprime.readthedocs.io/en/stable/)
 - VCF files: [scikit-allel](https://scikit-allel.readthedocs.io/en/stable/) [vcftools](https://vcftools.github.io/index.html)
 
