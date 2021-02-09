@@ -1,7 +1,5 @@
 # Data analysis project on GenomeDK
 
-<script src="https://gist.github.com/kaspermunch/3819068502531fc4ac2e732957916a0d.js"></script>
-
 <img src="https://icon-library.com/images/62418-database-icons-virtual-servers-computer-private-server.png" align="right" width="200"  />
 
 This repository serves as a walk-through to begin a data analysis project on the [GenomeDK cluster](https://genome.au.dk/). Be that a PiB, BSc, MSc, or Ph.D. project. For more seasoned users, it can serve as a showcase of best practices. Some basic experience executing commands in a "terminal" is assumed.
