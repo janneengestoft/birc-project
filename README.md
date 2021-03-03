@@ -173,25 +173,13 @@ Should you end up needing more packages than you initially included, you can eas
 
 [Jupyter](https://jupyter.org/) is a notebook environment where you can easily combine text, code, and plots. Using the [slurm-jupyter](https://slurm-jupyter.readthedocs.io/en/latest) tool, you can run a jupyter notebook on the cluster but see it in the browser on your own machine. That way, your analysis runs on the cluster file system where your data is but the notebook interface is sent to your browser window. 
 
-The first thing you need to do is create a separate conda environment that has jupyter installed. Do not worry about this extra environment. You will not be using it directly. We just need it to be able to run jupyter notebooks in class. 
-
-```bash
-conda create -n jupyter -c conda-forge -c bioconda -c kaspermunch slurm-jupyter jupyter jupyterlab ipyparallel pandas numpy matplotlib ipympl nodejs seaborn r-essentials rpy2 simplegeneric tzlocal r-vcfr bioconductor-biocinstaller bioconductor-snprelate r-biocmanager
-```
-
-It may take `conda` a while to create the environment, so be patient. Once created, you must activate that environment:
-
-```bash
-conda activate jupyter
-```
-
-and then run this command:
+Before you can connect to a jupyter session on the cluster, you need to do a bit of configuration of the jupyter settings on the cluster. `slurm-jupyter` comes with script that automates that procedure. Just log into the cluster, activate your environment, and run:
 
 ```bash
 config-slurm-jupyter.sh
 ```
 
-That script will ask for a lot of information. You can just press `Enter` for all of them **except** when prompted for what password you want to use: Then, you must type your cluster password.
+The script will ask for a lot of information. You can just press `Enter` for all of them **except** when prompted for what password you want to use: Then, you must type your cluster password.
 
 ## Backup and version control
 
