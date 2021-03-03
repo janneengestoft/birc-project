@@ -267,7 +267,7 @@ If you did not do so when you installed Anaconda, you should download and instal
 Jupyter runs best in the [Chrome browser](https://www.google.com/chrome). For the best experience, install that before you go on. It does not need to be your default browser. `slurm-jupyter` will use it anyway. Now make sure you are on your own machine and that your `popgen` environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:
 
 ```bash
-slurm-jupyter -u usernanme -A projectfolder -e bircproject
+slurm-jupyter -u usernanme -A projectfolder -e bircproject --run notebook
 ```
 
 (replace `username` with your cluster user name, `projectfolder` with your project folder name, and `bircproject` with whatever you called your conda environment on the cluster).
