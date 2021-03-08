@@ -156,7 +156,7 @@ Log in to the cluster and run this command to create a conda environment for you
 
 The command below should install what you need for a project in population genetics:
 
-    conda create --name bircproject -c gwforg -c conda-forge -c bioconda -c kaspermunch slurm-jupyter gwf pip jupyter jupyterlab numpy pandas matplotlib seaborn ipympl biopython pyfaidx scikit-allel pylint vcftools tabix samtools 
+    conda create --name bircproject -c gwforg -c conda-forge -c bioconda -c kaspermunch slurm-jupyter gwf pip jupyter jupyterlab ipyparallel numpy pandas matplotlib seaborn ipympl biopython pyfaidx scikit-allel pylint vcftools tabix samtools 
     
 Should you end up needing more packages than you initially included, you can easily install them later. E.g., to see how to install `cartopy` using `conda`, just google "conda cartopy". The top link instructs you to install it like this: `conda install -c conda-forge cartopy`.
 
