@@ -4,9 +4,12 @@ from scripts.modpath import modpath
 gwf = Workflow()
 
 # Chromosome and group to perform admixture analysis on
-chr = 7
+vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chrX.removed.AB.pass.vep.vcf.gz'
+chr = 'X'
 pop = 'females'
 ks = range(4, 11)
+
+
 
 def vcf_filter(vcf_file, chrom, popfile, pop):
     output_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
@@ -58,15 +61,15 @@ def vcf2bed(chrom, pop):
 
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-
 def admixture(k, chrom, pop):
     bedfile = f'steps/plink/chr{chrom}_{pop}.pruned.bed'
-    outputq = f'results/admixture/chr{chrom}_{pop}.pruned.{k}.Q'
-    outputp = f'results/admixture/chr{chrom}_{pop}.pruned.{k}.P'
+    outputq = f'results/admixture/chr{chrom}_{pop}/chr{chrom}_{pop}.pruned.{k}.Q'
+    outputp = f'results/admixture/chr{chrom}_{pop}/chr{chrom}_{pop}.pruned.{k}.P'
     no_path = f'chr{chrom}_{pop}.pruned.{k}'
+    logs = f'results/admixture/crossvalidation/log_chr{chrom}_{pop}.{k}.out'
 
     inputs = [bedfile]
-    outputs = [outputq, outputp]
+    outputs = [outputq, outputp, logs]
 
     options = {
         'memory': '5g',
@@ -75,11 +78,13 @@ def admixture(k, chrom, pop):
 
     spec = f'''
 
-    mkdir -p results/admixture
+    mkdir -p results/admixture/chr{chrom}_{pop}
 
-    admixture {bedfile} {k}
+    mkdir -p results/admixture/crossvalidation
 
-    mv {no_path}* results/admixture/
+    admixture --cv {bedfile} {k} | tee {logs}
+
+    mv {no_path}* results/admixture/chr{chrom}_{pop}
 
     '''
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
@@ -87,13 +92,12 @@ def admixture(k, chrom, pop):
 gwf.target_from_template(
     name='exctract_pop',
     template=vcf_filter(
-        vcf_file='../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chr7.removed.AB.pass.vep.vcf.gz',
+        vcf_file=vcffile,
         chrom=chr,
         popfile='females_all.txt',
         pop=pop
     )
 )
-
 
 gwf.target_from_template(
     name='vcf2bed',
