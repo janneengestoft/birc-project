@@ -1,15 +1,13 @@
 from gwf import Workflow, AnonymousTarget
 from scripts.modpath import modpath
+import scripts.vcf2haps
 
 gwf = Workflow()
 
-# Chromosome and group to perform admixture analysis on
 vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chrX.removed.AB.pass.vep.vcf.gz'
-chr = 'X'
-pop = 'females'
-ks = range(4, 11)
-
-
+chrom = 'X'
+pop = 'males'
+popfile = 'males.txt'
 
 def vcf_filter(vcf_file, chrom, popfile, pop):
     output_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
@@ -33,86 +31,79 @@ def vcf_filter(vcf_file, chrom, popfile, pop):
 
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-def vcf2bed(chrom, pop):
-    filtered_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
-    bed = f'steps/plink/chr{chrom}_{pop}.bed'
-    base_name = modpath(bed, suffix=('.bed', ''))
-    pruned_bed = f'steps/plink/chr{chrom}_{pop}.pruned.bed'
-    
-    inputs = [filtered_vcf]
-    outputs = [pruned_bed]
+def vcf2chromopainter(chrom, pop):
+    recoded_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
+    phase_file = f'steps/chromopainter/phase_{chrom}_{pop}.haps'
 
+    inputs = [recoded_vcf]
+    outputs = [phase_file]
     options = {
         'memory': '2g',
-        'walltime': '02:00:00'
+        'walltime': '03:00:00'
     }
 
     spec = f'''
 
-    mkdir -p steps/plink
+    mkdir -p steps/chromopainter
 
-    plink --vcf {filtered_vcf} --make-bed --double-id --geno 0.025 --indep-pairwise 50 10 0.1 \
-        --out {base_name}
-    
-    plink --bfile {base_name} --extract {base_name}.prune.in --make-bed --out {base_name}.pruned
+    scripts/vcf2haps.py {recoded_vcf} {phase_file}
 
- 
     '''
 
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-def admixture(k, chrom, pop):
-    bedfile = f'steps/plink/chr{chrom}_{pop}.pruned.bed'
-    outputq = f'results/admixture/chr{chrom}_{pop}/chr{chrom}_{pop}.pruned.{k}.Q'
-    outputp = f'results/admixture/chr{chrom}_{pop}/chr{chrom}_{pop}.pruned.{k}.P'
-    no_path = f'chr{chrom}_{pop}.pruned.{k}'
-    logs = f'results/admixture/crossvalidation/log_chr{chrom}_{pop}.{k}.out'
+def chromopainter(chrom, pop):
+    phase_file = f'steps/chromopainter/phase_{chrom}_{pop}.haps'
+    recomb_file = f'data/{chrom}_{pop}.recomrates'                                          # Not the right name
+    output = f'steps/chromopainter/something_{chrom}_{pop}.'                                # Not right yet either
 
-    inputs = [bedfile]
-    outputs = [outputq, outputp, logs]
-
+    inputs = [phase_file, recomb_file]
+    outputs = [output]
     options = {
-        'memory': '5g',
-        'walltime': '8:00:00'
+        'memory': '2g',
+        'walltime': '10:00:00'
     }
-
+    
     spec = f'''
 
-    mkdir -p results/admixture/chr{chrom}_{pop}
+    ~/baboondiversity/software/chromopainter-0.0.4/chromopainter -g {phase_file} -r {recomb_file} -a 0 0 -j -o {output}
 
-    mkdir -p results/admixture/crossvalidation
+    
+    '''
 
-    admixture --cv {bedfile} {k} | tee {logs}
+    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-    mv {no_path}* results/admixture/chr{chrom}_{pop}
+def finestructure():
+    inputs = []
+    outputs = []
+    options = {
+        'memory': '2g',
+        'walltime': '10:00:00'
+    }
+    
+    spec = f''' 
+    
+    ~/baboondiversity/software/finestructure-0.0.5/finestructure 
 
     '''
+
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
 
 gwf.target_from_template(
     name='exctract_pop',
     template=vcf_filter(
         vcf_file=vcffile,
-        chrom=chr,
-        popfile='females_all.txt',
+        chrom=chrom,
+        popfile=popfile,
         pop=pop
     )
 )
 
 gwf.target_from_template(
-    name='vcf2bed',
-    template=vcf2bed(
-        chrom=chr,
+    name='reformat_plink',
+    template=vcf2chromopainter(
+        chrom=chrom,
         pop=pop
     )
 )
-
-for k in ks:
-    gwf.target_from_template(
-        name=f'admixture_{k}',
-        template=admixture(
-            k=k,
-            chrom=chr,
-            pop=pop
-        )
-    )
