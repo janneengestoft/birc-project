@@ -1,6 +1,5 @@
 from gwf import Workflow, AnonymousTarget
 from scripts.modpath import modpath
-import scripts.vcf2haps
 
 gwf = Workflow()
 
@@ -31,51 +30,14 @@ def vcf_filter(vcf_file, chrom, popfile, pop):
 
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-def vcf2chromopainter(chrom, pop):
-    recoded_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
-    phase_file = f'steps/chromopainter/phase_{chrom}_{pop}.haps'
+def vcf2plink(chrom, pop):
+    filtered_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
+    ped_file = f'steps/plink/chr{chrom}_{pop}.ped'
+    map_file = f'steps/plink/chr{chrom}_{pop}.map'
+    base_name = modpath(ped_file, suffix=('.ped', ''))
 
-    inputs = [recoded_vcf]
-    outputs = [phase_file]
-    options = {
-        'memory': '2g',
-        'walltime': '03:00:00'
-    }
-
-    spec = f'''
-
-    mkdir -p steps/chromopainter
-
-    scripts/vcf2haps.py {recoded_vcf} {phase_file}
-
-    '''
-
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
-
-def chromopainter(chrom, pop):
-    phase_file = f'steps/chromopainter/phase_{chrom}_{pop}.haps'
-    recomb_file = f'data/{chrom}_{pop}.recomrates'                                          # Not the right name
-    output = f'steps/chromopainter/something_{chrom}_{pop}.'                                # Not right yet either
-
-    inputs = [phase_file, recomb_file]
-    outputs = [output]
-    options = {
-        'memory': '2g',
-        'walltime': '10:00:00'
-    }
-    
-    spec = f'''
-
-    ~/baboondiversity/software/chromopainter-0.0.4/chromopainter -g {phase_file} -r {recomb_file} -a 0 0 -j -o {output}
-
-    
-    '''
-
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
-
-def finestructure():
-    inputs = []
-    outputs = []
+    inputs = [filtered_vcf]
+    outputs = [ped_file, map_file]
     options = {
         'memory': '2g',
         'walltime': '10:00:00'
@@ -83,12 +45,65 @@ def finestructure():
     
     spec = f''' 
     
-    ~/baboondiversity/software/finestructure-0.0.5/finestructure 
+    mkdir -p steps/plink
+
+    plink --vcf {filtered_vcf} --recode12 --double-id --geno 0.025 --out {base_name}  
 
     '''
 
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
+def plink2finestructure(chrom, pop):
+    ped_file = f'steps/plink/chr{chrom}_{pop}.ped'
+    map_file = f'steps/plink/chr{chrom}_{pop}.map'
+    id_file = f'steps/finestructure/chr{chrom}_{pop}.ids'
+    phase_file = f'steps/finestructure/chr{chrom}_{pop}.phase'                              # Fix name
+
+    inputs = [ped_file, map_file]
+    outputs = [phase_file, id_file]
+    options = {
+        'memory': '2g',
+        'walltime': '10:00:00'
+    }
+    
+    spec = f''' 
+
+    mkdir -p steps/finestructure
+    
+    ../../../software/fs_janne/plink2chromopainter.pl -p={ped_file} -m={map_file} \
+        -d={id_file} -o={phase_file}   
+
+    '''
+
+    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+def finestructure(chrom, pop):
+    phase_file = f'steps/finestructure/chr{chrom}_{pop}.phase'
+    # recomb_file = f'data/{chrom}_{pop}.recomrates'
+    id_file = f'steps/finestructure/chr{chrom}_{pop}.ids'
+    project_name = f'fs_chr{chrom}_{pop}'
+
+    inputs = [phase_file, id_file]
+    outputs = [project_name]
+    options = {
+        'memory': '15g',
+        'walltime': '3-00:00:00'
+    }
+    
+    spec = f''' 
+    
+    mkdir -p results/finestructure/chr{chrom}_{pop}
+
+    fs {project_name}.cp -n -phasefiles {phase_file} \
+        -idfile {id_file} -go
+
+
+    '''
+
+    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+#-recombfiles {recomb_file}
+#mv {project_name}* results/finestructure/chr{chrom}_{pop}
 
 gwf.target_from_template(
     name='exctract_pop',
@@ -101,8 +116,24 @@ gwf.target_from_template(
 )
 
 gwf.target_from_template(
-    name='reformat_plink',
-    template=vcf2chromopainter(
+    name='reformat2plink',
+    template=vcf2plink(
+        chrom=chrom,
+        pop=pop
+    )
+)
+
+gwf.target_from_template(
+    name='reformat2finestructure',
+    template=plink2finestructure(
+        chrom=chrom,
+        pop=pop
+    )
+)
+
+gwf.target_from_template(
+    name='finestructure',
+    template=finestructure(
         chrom=chrom,
         pop=pop
     )
