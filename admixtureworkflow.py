@@ -4,8 +4,8 @@ from scripts.modpath import modpath
 gwf = Workflow()
 
 # Chromosome and group to perform admixture analysis on
-vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chrX.removed.AB.pass.vep.vcf.gz'
-chr = 'X'
+vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chr7.removed.AB.pass.vep.vcf.gz'
+chr = '7'
 pop = 'females'
 popfile = 'females.txt'
 ks = range(4, 11)

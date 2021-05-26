@@ -3,10 +3,10 @@ from scripts.modpath import modpath
 
 gwf = Workflow()
 
-vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chrX.removed.AB.pass.vep.vcf.gz'
-chrom = 'X'
-pop = 'males'
-popfile = 'males.txt'
+vcffile = '../../../../primatediversity/data/PG_baboons_pananu3_23_2_2021/output.filtered.snps.chr7.removed.AB.pass.vep.vcf.gz'
+chrom = '7'
+pop = 'females'
+popfile = 'females.txt'
 
 def vcf_filter(vcf_file, chrom, popfile, pop):
     output_vcf = f'steps/recode_vcf/chr{chrom}_{pop}.recode.vcf'
@@ -15,8 +15,10 @@ def vcf_filter(vcf_file, chrom, popfile, pop):
     inputs = [vcf_file]
     outputs = [output_vcf]
     options = {
+        'cores': 1,
         'memory': '2g',
-        'walltime': '02:00:00'
+        'walltime': '02:00:00',
+        'account': 'baboondiversity'
     }
     
     spec = f'''
@@ -39,8 +41,10 @@ def vcf2plink(chrom, pop):
     inputs = [filtered_vcf]
     outputs = [ped_file, map_file]
     options = {
+        'cores': 1,
         'memory': '2g',
-        'walltime': '10:00:00'
+        'walltime': '10:00:00',
+        'account': 'baboondiversity'
     }
     
     spec = f''' 
@@ -62,8 +66,10 @@ def plink2finestructure(chrom, pop):
     inputs = [ped_file, map_file]
     outputs = [phase_file, id_file]
     options = {
-        'memory': '2g',
-        'walltime': '10:00:00'
+        'cores': 1,
+        'memory': '15g',
+        'walltime': '10:00:00',
+        'account': 'baboondiversity'
     }
     
     spec = f''' 

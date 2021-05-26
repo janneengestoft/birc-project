@@ -15,13 +15,13 @@ By Erik Fogh Sørensen
 #
 
 gwf = Workflow(defaults={"account": "baboondiversity"})
-run_name = "test_unlinked"
+run_name = "test"
 cp_dir = "steps/finestructure/"
 os.makedirs(cp_dir+run_name, exist_ok=True)
 idfile = "../../../data/haploidified_chrX_males/idfile.ids"
 phasefile = "../../../data/haploidified_chrX_males/chrX_haploid.phase"
-recombfile = '~primatediversity/data/PG_baboons_pananu3_23_2_2021_ldhat/maps/chrX.map'
-# recombfile = "../../../data/haploidified_chrX_males/uniform_rec.recombfile" # Uniform recombination rate
+# recombfile = 'data/chrX.map'
+recombfile = "../../../data/haploidified_chrX_males/approx_rec.recombfile" # Uniform recombination rate
 s3iters = 100000
 s4iters = 50000
 s1minsnps = 1000
